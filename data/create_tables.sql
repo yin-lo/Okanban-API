@@ -9,6 +9,7 @@ DROP TABLE IF EXISTS "list", "card", "tag", "card_has_tag";
 CREATE TABLE "list" (
   "id" INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   "name" TEXT,
+  "position" INTEGER NOT NULL,
   "created_at" TIMESTAMPTZ NOT NULL DEFAULT now(), 
   "updated_at" TIMESTAMPTZ
 );
@@ -35,7 +36,6 @@ CREATE TABLE "tag" (
   "id" INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   "name" TEXT NOT NULL,
   "color" TEXT NOT NULL,
-  "list_id" INTEGER NOT NULL REFERENCES "list" ("id"),
   "created_at" TIMESTAMPTZ NOT NULL DEFAULT now(), 
   "updated_at" TIMESTAMPTZ
 );
