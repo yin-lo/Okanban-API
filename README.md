@@ -17,10 +17,10 @@ On se base sur ce besoin pour créer le MCD de l'application.
 
 En tant que _client_, je veux _un document_ dans le but de _comprendre les fonctionnalités de mon application_.
 
-Complètez le tableau dans le fichier [user_stories.md](./user_stories.md).
+Complètez le tableau dans le fichier [user_stories.md](./docs/user_stories.md).
 
 ## Étape 2 : MCD
 
-Déssinez le MCD en utilisant l'outils de votre choix : un papier et un crayon, [draw.io](https://draw.io), [Mocodo](http://mocodo.wingi.net/) ([fiche recap](https://kourou.oclock.io/ressources/fiche-recap/mocodo/)), [Whimsical](https://whimsical.com/), etc.
+Dessinez le MCD en utilisant l'outils de votre choix : un papier et un crayon, [draw.io](https://draw.io), [Mocodo](https://www.mocodo.net/) ([fiche recap](https://kourou.oclock.io/ressources/fiche-recap/mocodo/)), [Whimsical](https://whimsical.com/), etc.
 
 N'hésitez pas à faire un tour sur la [fiche recap du MCD](https://kourou.oclock.io/ressources/fiche-recap/mcd-modele-conceptuel-de-donnees/).
