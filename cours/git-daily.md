@@ -9,6 +9,11 @@
 
 Tous les autres jours
 
+- On s'assure d'avoir bien sauvegardé son travail
+  - Si je n'ai pas encore créer de branch (`git checkout -b day-X`)
+  - Je commit mon travail si je n'ai pas encore commité (`git add . && git commit -m "message"`)
+  - Je sauvegarde mon travail sur mon repo github (`git push origin day-X`)
+
 - Récupérer la correction
   - je me met sur la branch master (`git checkout master`)
   - je récupère les dernières modifications (`git fetch correction && git reset --hard correction/master`)
