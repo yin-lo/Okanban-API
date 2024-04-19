@@ -29,21 +29,12 @@ card (
   updated_at
 )
 
-thème (
-  id
-  name
-  description
-  created_at
-  updated_at
-)
-
 tag (
   id
   name
   color
   created_at
   updated_at
-
 )
 
 card_has_tag (
