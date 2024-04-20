@@ -17,6 +17,7 @@
   },
   "rules": {
     "import/extensions": "off",
-    "import/named": "off"
+    "import/named": "off",
+    "no-console": "off"
   }
 }
