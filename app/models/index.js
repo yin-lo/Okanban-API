@@ -32,4 +32,4 @@ Tag.belongsToMany(Card, {
   otherKey: 'card_id',
 });
 
-export default { List, Card, Tag };
+export { List, Card, Tag };

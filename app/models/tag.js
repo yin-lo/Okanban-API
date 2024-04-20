@@ -1,6 +1,8 @@
+import { DataTypes, Model } from 'sequelize';
+
 import sequelize from '../db/client.js';
 
-const { DataTypes, Model } = require('sequelize');
+// const { DataTypes, Model } = require('sequelize');
 
 class Tag extends Model {}
 
