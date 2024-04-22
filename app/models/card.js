@@ -2,8 +2,6 @@ import { DataTypes, Model } from 'sequelize';
 
 import sequelize from '../db/client.js';
 
-// const { DataTypes, Model } = require('sequelize');
-
 class Card extends Model {}
 
 Card.init({
@@ -13,10 +11,13 @@ Card.init({
   },
   position: {
     type: DataTypes.INTEGER,
+    allowNull: false,
+    defaultValue: 0,
   },
   color: {
     type: DataTypes.TEXT,
     allowNull: false,
+    defaultValue: '#BED',
   },
 }, {
   sequelize,

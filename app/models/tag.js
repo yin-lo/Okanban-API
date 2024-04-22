@@ -14,6 +14,7 @@ Tag.init({
   color: {
     type: DataTypes.TEXT,
     allowNull: false,
+    defaultValue: '#edd0be',
   },
 }, {
   sequelize,

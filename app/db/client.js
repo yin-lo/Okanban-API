@@ -1,8 +1,6 @@
-import dotenv from 'dotenv';
+import 'dotenv/config';
 
 import Sequelize from 'sequelize';
-
-dotenv.config();
 
 // const { Sequelize } = require('sequelize');
 
@@ -14,4 +12,4 @@ const sequelize = new Sequelize(process.env.PG_URL, {
   },
 });
 
-export default (sequelize);
+export default sequelize;

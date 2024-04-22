@@ -1,3 +1,4 @@
+import sequelize from '../db/client.js';
 import List from './list.js';
 import Card from './card.js';
 import Tag from './tag.js';
@@ -14,6 +15,8 @@ Card.belongsTo(List, {
   foreignKey: 'list_id',
   as: 'list',
 });
+
+// ---------------------------- //
 
 // Card <-> Tag (Many-to-Many)
 // Cards belong to many Tags
@@ -32,4 +35,9 @@ Tag.belongsToMany(Card, {
   otherKey: 'card_id',
 });
 
-export { List, Card, Tag };
+export {
+  List,
+  Card,
+  Tag,
+  sequelize,
+};
