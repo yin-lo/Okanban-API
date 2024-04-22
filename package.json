@@ -6,7 +6,9 @@
   "type": "module",
   "scripts": {
     "start": "node index.js",
-    "dev": "node --watch index.js"
+    "dev": "node --watch index.js",
+    "db:init": "psql -U okanban -f ./data/create_tables.sql",
+    "db:seeding": "psql -U okanban -f ./data/seeding_tables.sql"
   },
   "keywords": [],
   "author": "",
