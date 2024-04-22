@@ -1,6 +1,6 @@
 BEGIN;
 
-INSERT INTO "list" ("name", "position") VALUES
+INSERT INTO "list" ("title", "position") VALUES
 ('backLog', 1),
 ('en cours', 2),
 ('terminé',3),
@@ -16,13 +16,13 @@ INSERT INTO "card" ("title", "position", "color", "list_id") VALUES
 ('se connecter à la BDD',3,'violet',1);
 
 INSERT INTO "tag" ("name", "color") VALUES
-('rapide','vert'),
-('doc','jaune'),
-('danger','rouge'),
-('fix','bleu'),
-('attention','orange'),
-('add','violet'),
-('ultra urgent','noir');
+('rapide','#0F0'),
+('doc','#FF0'),
+('danger','#F00'),
+('fix','#00F'),
+('attention','#FF7F00'),
+('add','#7F00FF'),
+('ultra urgent','#000');
 
 INSERT INTO "card_has_tag" ("card_id", "tag_id") VALUES
 (1,1),

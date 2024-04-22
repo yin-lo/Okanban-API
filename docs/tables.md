@@ -15,7 +15,7 @@ C'est une étape de **traduction** du MCD en vu d'une implémentation dans un SG
 ```text
 list (
   id
-  name
+  title
   position
 )
 
@@ -41,6 +41,8 @@ card_has_tag (
   id
   #card_id
   #tag_id
+  created_at
+  updated_at
 )
 
 ```

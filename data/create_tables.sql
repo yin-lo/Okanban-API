@@ -1,6 +1,6 @@
 BEGIN;
 
-DROP TABLE IF EXISTS "list", "card", "tag", "card_has_tag";
+DROP TABLE IF EXISTS  "card_has_tag", "card", "tag", "list";
 
 -----------------------------------------
 -------------- Table "list" -------------
@@ -8,9 +8,9 @@ DROP TABLE IF EXISTS "list", "card", "tag", "card_has_tag";
 
 CREATE TABLE "list" (
   "id" INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-  "name" TEXT,
-  "position" INTEGER NOT NULL,
-  "created_at" TIMESTAMPTZ NOT NULL DEFAULT now(), 
+  "title" TEXT NOT NULL,
+  "position" INTEGER NOT NULL DEFAULT 0,
+  "created_at" TIMESTAMPTZ NOT NULL DEFAULT NOW(), 
   "updated_at" TIMESTAMPTZ
 );
 
@@ -21,10 +21,10 @@ CREATE TABLE "list" (
 CREATE TABLE "card" (
   "id" INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   "title" TEXT NOT NULL,
-  "position" INTEGER,
-  "color" TEXT NOT NULL,
-  "list_id" INTEGER NOT NULL REFERENCES "list" ("id"),
-  "created_at" TIMESTAMPTZ NOT NULL DEFAULT now(), 
+  "position" INTEGER NOT NULL DEFAULT 0,
+  "color" TEXT NOT NULL DEFAULT '#BED',
+  "list_id" INTEGER NOT NULL REFERENCES "list" ("id") ON DELETE CASCADE,
+  "created_at" TIMESTAMPTZ NOT NULL DEFAULT NOW(), 
   "updated_at" TIMESTAMPTZ
 );
 
@@ -35,8 +35,8 @@ CREATE TABLE "card" (
 CREATE TABLE "tag" (
   "id" INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   "name" TEXT NOT NULL,
-  "color" TEXT NOT NULL,
-  "created_at" TIMESTAMPTZ NOT NULL DEFAULT now(), 
+  "color" TEXT NOT NULL DEFAULT '#BED',,
+  "created_at" TIMESTAMPTZ NOT NULL DEFAULT NOW(), 
   "updated_at" TIMESTAMPTZ
 );
 
@@ -46,9 +46,10 @@ CREATE TABLE "tag" (
 
 CREATE TABLE "card_has_tag" (
   "id" INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-  "card_id" INTEGER NOT NULL REFERENCES "card" ("id"),
-  "tag_id" INTEGER NOT NULL REFERENCES "tag" ("id"),
-  "created_at" TIMESTAMPTZ NOT NULL DEFAULT now(), 
+  "card_id" INTEGER NOT NULL REFERENCES "card" ("id") ON DELETE CASCADE,
+  -- quand une carte est supprimée, l'association qu'elle a avec le tag est supprimée aussi
+  "tag_id" INTEGER NOT NULL REFERENCES "tag" ("id") ON DELETE CASCADE,
+  "created_at" TIMESTAMPTZ NOT NULL DEFAULT NOW(), 
   "updated_at" TIMESTAMPTZ,
   UNIQUE ("card_id", "tag_id")
 );
