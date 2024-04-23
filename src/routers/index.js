@@ -39,8 +39,16 @@ router.patch('/cards/:id', isNumberMiddleware, cardController.update);
 
 router.delete('/cards/:id', isNumberMiddleware, cardController.destroy);
 
-// --------------- TAGS -------------------------
+// -------------- TAGS ----------------------
 
-router.get('/tags', isNumberMiddleware, tagController.index);
+router.get('/tags', tagController.index);
+
+router.post('/tags', tagController.store);
+
+router.patch('/tags/:id', tagController.update);
+
+router.delete('/tags/:id', isNumberMiddleware, tagController.destroy);
+
+router.post('/cards/:id/tag', tagController.edit);
 
 export { router };

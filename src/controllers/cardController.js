@@ -1,4 +1,6 @@
-import { Card } from '../models/card.js';
+import { Card, List } from '../models/index.js';
+
+
 
 const cardController = {
   async index(req, res) {
@@ -58,13 +60,13 @@ const cardController = {
     if (typeof content  !== 'string' || typeof color !== 'string') {
       return res.status(400).json({ error: 'Les paramètres content ou color sont invalides' });
     }
-    
 
     const cardToUpdate = await Card.findByPk(id);
 
     if (!cardToUpdate) {
       return res.status(404).json({ error: "La carte n'existe pas" });
     }
+    //TODO vérifier que list _id existe en bdd
 
     const updatedCard = await cardToUpdate.update({
       content: content || cardToUpdate.content,
