@@ -17,7 +17,7 @@ POST http://localhost:5000/lists HTTP/1.1
 content-type: application/json
 
 {
-    "title": "Un liste",
+    "title": "Une liste",
     "position": 8
 
 }

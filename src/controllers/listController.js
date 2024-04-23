@@ -20,7 +20,7 @@ const listController = {
   },
 
   async show(req, res) {
-    const list = await List.findByPk(listId, {
+    const list = await List.findByPk(id, {
       include: {
         association: 'cards',
         include: 'tags',
@@ -84,7 +84,7 @@ const listController = {
 
     await list.destroy();
 
-    return res.json({ message: 'La ressource a été effacé' });
+    return res.json({ message: 'La ressource a été effacée' });
   },
 };
 
