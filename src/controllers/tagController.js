@@ -68,20 +68,20 @@ const tagController = {
     const { id } = req.params;
     const { tag_id } = req.body;
 
-    const cardToUpdate = await Card.findByPk(id);
+    // const cardToUpdate = await Card.findByPk(id);
     
-    const tagToUpdate = await Tag.findByPk(1);
+    // const tagToUpdate = await Tag.findByPk(1);
 
-    const card = await cardToUpdate.create(tagToUpdate);
-    // const updatedTag = await tagToUpdate.create({
-    //   where: { tag_id },
-    //   include: {
-    //     association: 'card',
-    //     through: {
-    //       attributes: ['card_id'],
-    //     },
-    //   },
-    // });
+    // const card = await cardToUpdate.create(tagToUpdate);
+    const updatedTag = await tagToUpdate.create({
+      where: { tag_id },
+      include: {
+        association: 'card',
+        through: {
+          attributes: ['card_id'],
+        },
+      },
+    });
     return res.json(card);
   },
 };
