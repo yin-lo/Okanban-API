@@ -1,5 +1,76 @@
 # oKanban : Atelier Conception
 
+- [ ] git checkout master
+- [ ] git fetch prof # ou correction
+- [ ] git reset --hard prof/master # ou correction/master
+- [ ] git checkout -b jour4
+
+## jour 4 : Implémentation
+
+Pour chacune des tâches suivantes, créer un nouveau controller.
+
+### Cartes
+
+Mettre en place les routes suivantes :
+
+- GET `/lists/:id/cards` : renvoie toutes les cartes d'une liste. Chaque carte doit porter les tags qui lui sont associés.
+- GET `/cards/:id` : renvoie les détails de la carte demandée, avec les tags qui lui sont associés.
+- POST `/cards` : crée une nouvelle carte (attention à bien valider les paramètres)
+- PATCH `/cards/:id` : modifie une carte (ou 404)
+- DELETE `/cards/:id` : supprimer ou carte (ou 404)
+
+### Tags
+
+Mettre en place les routes suivantes
+
+- GET `/tags` : renvoie tous les tags
+- POST `/tags` : crée un nouveau tag (attention aux paramètres)
+- PATCH `/tags/:id` : modifie le tag ciblé (ou 404, ou 400, bref on commence à avoir l'habitude)
+- DELETE `/tags/:id` : supprime un tag. (Pas besoin de toucher à la table de liaison, on en reparlera en cockpit!)
+- POST `/cards/:id/tag` : associe un tag à la carte ciblée. L'id du tag doit se trouver dans les paramètres POST (sous le nom "tag_id")
+- DELETE `/cards/:card_id/tag/:tag_id` : supprime l'association entre le tag et la carte.
+
+---
+
+## jour 3 : Mise en place de l'API
+
+### Archi
+
+Mettre en place l'architecture "classique" d'une projet express :
+
+- installer les dépendances nécessaires avec npm.
+- dossier `app/controllers`.
+- fichier `app/router.js`.
+- point d'entrée `index.js`.
+
+### Le Train-train Express
+
+Mettre en place le fichier `index.js`. Oui c'est vrai, c'est un peu toujours la même chose...
+
+Note: pensez qu'on va faire des routes POST ! (donc avec des body ...)
+
+### Premiers controller, premières routes
+
+En respectant au maximum les principes de l'architecture REST, et [le tableau de routes fait ensemble](./docs/routes_REST.md), implémentez tout ce que vous pouvez !
+
+```js
+// envoyer le format JSON
+res.json(object)
+```
+
+- commencez plutôt par les routes GET
+- puis les POST
+- puis les PATCH
+- et enfin les DELETE
+- ceci n'est qu'un conseil ! si vous préférez faire toutes les "/lists" d'abord, libre à vous !
+
+Pour tester toutes ces routes, il existe plusieurs solutions, mais la plus simple reste d'utiliser un petit logiciel :
+
+- [Insomnia](https://support.insomnia.rest/article/23-installation#ubuntu)
+- [POSTMAN](https://www.getpostman.com/)
+- [VSC REST client](https://marketplace.visualstudio.com/items?itemName=humao.rest-client)
+- y'en a probablement d'autres...
+
 ## JOUR 2
 
 ### De "concept" à "logique"
