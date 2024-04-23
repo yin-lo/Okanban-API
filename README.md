@@ -1,9 +1,9 @@
 # oKanban : Atelier Conception
 
-`git checkout master`
-`git fetch prof # ou correction`
-`git reset --hard prof/master # ou correction/master`
-`git checkout -b jour3`
+- [ ] git checkout master
+- [ ] git fetch prof # ou correction
+- [ ] git reset --hard prof/master # ou correction/master
+- [ ] git checkout -b jour4
 
 ## jour 3 : Mise en place de l'API
 
