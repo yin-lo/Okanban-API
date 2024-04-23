@@ -2,9 +2,9 @@
 const isNumberMiddleware = (req, res, next) => {
     // Si on récupère id, on l'enregistre
     if (req.params.id) {
-        const listId = Number.parseInt(req.params.id, 10);
+        const id = Number.parseInt(req.params.id, 10);
         // Si NaN
-        if (!Number.isInteger(listId)) {
+        if (!Number.isInteger(id)) {
             // * il faudrait envoyer next(err)
             return res
                 .status(400)
