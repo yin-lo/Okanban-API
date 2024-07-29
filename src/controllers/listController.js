@@ -1,4 +1,6 @@
 import { List } from '../models/index.js';
+import sanitize from 'sanitize-html';
+import Joi from 'joi';
 
 const listController = {
     async index(req, res) {
@@ -24,9 +26,9 @@ const listController = {
         // * avec parseInt, on obtient un integer ou NaN
         const listId = Number.parseInt(req.params.id, 10);
 
-        if (!Number.isInteger(listId)) {
-            return res.status(404).json({ message: 'Not found' });
-        }
+        // if (!Number.isInteger(listId)) {
+        //     return res.status(404).json({ message: 'Not found' });
+        // }
 
         const list = await List.findByPk(listId, {
             include: {
@@ -41,7 +43,7 @@ const listController = {
     async store(req, res) {
         // ! On doit valider les données qui viennent du client : on ne fait jamais confiance à ce qui vient du client, on n'utilisa pas req.body directement
         // ! Idéalement, on validerai req.body dans un middleware
-        const { title, position } = req.body;
+        let { title, position } = req.body;
 
         if (!title || typeof title !== 'string') {
             return res
@@ -55,22 +57,28 @@ const listController = {
                 .json({ error: 'Le paramètre position est invalide' });
         }
 
+        // * Enlever les balises html / supprimer le javascript
+        title = sanitize(req.body.title);
+
         const newList = await List.create({ title, position });
 
-        res.json({ list: newList });
+        res.json(newList);
     },
 
     async update(req, res) {
         const { id } = req.params;
         const { title, position } = req.body;
 
-        if (typeof title !== 'string') {
-            return res
-                .status(400)
-                .json({ error: 'Le paramètre title est invalide' });
-        }
-
         // ! On gèrera la validation de position avec un module
+        const schema = Joi.object({
+            title: Joi.string().min(1),
+            position: Joi.number().integer().greater(0),
+        });
+
+        const { error } = schema.validate(req.body);
+        if (error) {
+            return res.status(400).json({ error: error.message });
+        }
 
         // * Avant de mettre àjour, on doit récupérer une ressource : on s'assure que la liste existe
         const listToUpdate = await List.findByPk(id);
@@ -86,7 +94,7 @@ const listController = {
             position: position || listToUpdate.position,
         });
 
-        return res.json({ list: updatedList });
+        return res.json(updatedList);
     },
 
     async destroy(req, res) {
